@@ -1,29 +1,22 @@
 import pygame
-
-viewerBackground = (0, 0, 0)
-blockWidth = 32
-blockHeight = 32
-
-settingsIcon = "settingsGear"
+from player import PlayerClass
 
 
-class viewerClass:
-  def __init__(self, width, height, playerimg, levelimg):
-    self.width = width
-    self.height = height
-    self.screen = pygame.display.set_mode([width, height])
-    self.levelimg = pygame.image.load("assets/" + levelimg)
-    self.playerimg = pygame.image.load("assets/" + playerimg)
-  
-  def adjustimg(self, img):
-    filename = pygame.image.load("assets/"+ img)
-    pygame.transform.scale(filename, (500, 350))
-    
-  def repaint(self, x, y):
-    self.screen.fill("white")
+class ViewerClass:
+    def __init__(self, width, height, levelimg):
+        self.width = width
+        self.height = height
+        self.screen = pygame.display.set_mode([width, height])
+        self.levelimg = pygame.transform.scale(pygame.image.load("assets/" + levelimg), (width * .5, height * .5))
+        self.levelrect = self.levelimg.get_rect()
 
-    self.screen.blit(self.levelimg, (0, 0))
-    self.screen.blit(self.playerimg, (self.width / 2 - 32, self.height / 2 - 32))
+    def repaint(self):
+        self.screen.fill("black")
+        self.screen.blit(self.levelimg, self.levelrect.center)
+        self.screen.blit()
 
-    # Print to screen
-    pygame.display.flip
+        # Print to screen
+        pygame.display.flip()
+
+    def getScreen(self):
+        return self.screen
