@@ -20,25 +20,18 @@ pressed = pygame.key.get_pressed()
 
 
 # Classes
-
-# lc = levelClass(400, 400)
-
-vc = ViewerClass(monitor.width - 150, monitor.height - 75, "background.jpg")
-pc = PlayerClass("settingsGear", 0, 0)
-pc.checkDirection(180)
-pc.loadPlayer(vc.getScreen())
-
-print(monitor.width - 150, monitor.height - 75)
-
-# Update Screen And Draw Player/Level
-vc.repaint()
+vc = ViewerClass(monitor.width - 150, monitor.height - 75, "background.jpg", 8)
+pc = PlayerClass("playerSheet", 100, 100, 8, vc.screen)
+# pc.checkDirection(180)
 
 if __name__ == '__main__':
     pass
 
+    vc.repaint()
 # ============================
 
 while running:
+    pc.checkDirection(45, True)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -46,6 +39,4 @@ while running:
     if pressed[pygame.K_q]:
         sys.exit(0)
     if pressed[pygame.K_w]:
-        pc.checkDirection(90)
-        pc.move(0)
-
+        pc.checkDirection(45, True)
