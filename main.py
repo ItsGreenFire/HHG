@@ -20,52 +20,51 @@ pygame.display.set_icon(pygame.image.load('assets/settingsGear.png'))
 # Variables
 running = True
 pressed = pygame.key.get_pressed()
-
+shiftDown = False
 
 # Classes
-vc = ViewerClass(monitor.width - 150, monitor.height - 75, "background.jpg")
+vc = ViewerClass(1280, 720, "background.jpg")
 sc = SpriteClass("playerSheet", 400, 100, 3, 8)
-sc2 = SpriteClass("playerSheet", 500, 300, 20, 8)
-sc2.setDirection(2)
-sc2.setSpeed(12)
 # pc.checkDirection(180)
 
 if __name__ == '__main__':
     pass
 
     vc.add_sprite(sc)
-    vc.add_sprite(sc2)
-    vc.repaint()
 
-# ============================
+# ============================x
 
 while running:
-    if sc2.currentx >= 550:
-        sc2.setDirection(6)
-    if sc2.currentx <= 100:
-        sc2.setDirection(2)
 
+    vc.repaint()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
         if not any(pygame.key.get_pressed()):
             sc.setDirection(4)
             sc.setSpeed(0)
+            shiftDown = False
         else:
             if keyboard.is_pressed("q"):
                 sys.exit(0)
             if keyboard.is_pressed("w"):
                 sc.setDirection(0)
-                sc.setSpeed(8)
+                sc.setSpeed(10)
             if keyboard.is_pressed("a"):
                 sc.setDirection(6)
-                sc.setSpeed(8)
+                sc.setSpeed(10)
             if keyboard.is_pressed("s"):
                 sc.setDirection(4)
-                sc.setSpeed(8)
+                sc.setSpeed(10)
             if keyboard.is_pressed("d"):
                 sc.setDirection(2)
-                sc.setSpeed(8)
+                sc.setSpeed(10)
+            if keyboard.is_pressed("shift"):
+                sc.setSpeed(5)
+                shiftDown = True
 
     vc.repaint()
-    clock.tick(24)
+    if shiftDown:
+        clock.tick(10)
+    else:
+        clock.tick(18)
