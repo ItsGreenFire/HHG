@@ -34,41 +34,43 @@ if __name__ == '__main__':
     vc.add_sprite(sc)
     vc.repaint()
 
-# ============================x
+# ============================
 
 while running:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
+        if keyboard.is_pressed("q"):
+            sys.exit(0)
+
+        if keyboard.is_pressed("w"):
+            if keyboard.is_pressed("shift"):
+                sc.setSpeed(5)
+            else:
+                sc.setSpeed(10)
+        if keyboard.is_pressed("s"):
+            if keyboard.is_pressed("shift"):
+                sc.setSpeed(-5)
+            else:
+                sc.setSpeed(-10)
+        if keyboard.is_pressed("a"):
+            if currentDir >= 1:
+                currentDir -= 1
+            else:
+                currentDir = 7
+            sc.setDirection(currentDir)
+        if keyboard.is_pressed("d"):
+            if currentDir <= 6:
+                currentDir += 1
+            else:
+                currentDir = 0
+            sc.setDirection(currentDir)
+    # TODO: Make player stop when no key is down
+    '''
         if not any(pygame.key.get_pressed()):
             sc.setDirection(currentDir)
             sc.setSpeed(0)
-        else:
-            if keyboard.is_pressed("q"):
-                sys.exit(0)
-            if keyboard.is_pressed("w"):
-                if keyboard.is_pressed("shift"):
-                    sc.setSpeed(5)
-                else:
-                    sc.setSpeed(10)
-            if keyboard.is_pressed("s"):
-                if keyboard.is_pressed("shift"):
-                    sc.setSpeed(-5)
-                else:
-                    sc.setSpeed(-10)
-            if keyboard.is_pressed("a"):
-                if currentDir >= 1:
-                    currentDir -= 1
-                else:
-                    currentDir = 7
-                print(currentDir)
-                sc.setDirection(currentDir)
-            if keyboard.is_pressed("d"):
-                if currentDir <= 6:
-                    currentDir += 1
-                else:
-                    currentDir = 0
-                sc.setDirection(currentDir)
+    '''
     vc.repaint()
     clock.tick(18)
