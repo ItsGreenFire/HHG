@@ -20,7 +20,8 @@ pygame.display.set_icon(pygame.image.load('assets/settingsGear.png'))
 # Variables
 running = True
 pressed = pygame.key.get_pressed()
-shiftDown = False
+currentDir = 4
+
 
 # Classes
 vc = ViewerClass(1280, 720, "background.jpg")
@@ -31,40 +32,43 @@ if __name__ == '__main__':
     pass
 
     vc.add_sprite(sc)
+    vc.repaint()
 
 # ============================x
 
 while running:
 
-    vc.repaint()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit(0)
         if not any(pygame.key.get_pressed()):
-            sc.setDirection(4)
+            sc.setDirection(currentDir)
             sc.setSpeed(0)
-            shiftDown = False
         else:
             if keyboard.is_pressed("q"):
                 sys.exit(0)
             if keyboard.is_pressed("w"):
-                sc.setDirection(0)
-                sc.setSpeed(10)
-            if keyboard.is_pressed("a"):
-                sc.setDirection(6)
-                sc.setSpeed(10)
+                if keyboard.is_pressed("shift"):
+                    sc.setSpeed(5)
+                else:
+                    sc.setSpeed(10)
             if keyboard.is_pressed("s"):
-                sc.setDirection(4)
-                sc.setSpeed(10)
+                if keyboard.is_pressed("shift"):
+                    sc.setSpeed(-5)
+                else:
+                    sc.setSpeed(-10)
+            if keyboard.is_pressed("a"):
+                if currentDir >= 1:
+                    currentDir -= 1
+                else:
+                    currentDir = 7
+                print(currentDir)
+                sc.setDirection(currentDir)
             if keyboard.is_pressed("d"):
-                sc.setDirection(2)
-                sc.setSpeed(10)
-            if keyboard.is_pressed("shift"):
-                sc.setSpeed(5)
-                shiftDown = True
-
+                if currentDir <= 6:
+                    currentDir += 1
+                else:
+                    currentDir = 0
+                sc.setDirection(currentDir)
     vc.repaint()
-    if shiftDown:
-        clock.tick(10)
-    else:
-        clock.tick(18)
+    clock.tick(18)
