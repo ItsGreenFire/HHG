@@ -1,2 +1,0 @@
-# HHG
-Horrific Horrors Game
