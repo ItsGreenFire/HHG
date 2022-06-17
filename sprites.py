@@ -9,7 +9,7 @@ class SpriteClass(pygame.sprite.Sprite):
 
         self.frames = frames
         self.index = 0
-        self.direction = 0
+        self.direction = 4
         self.speed = 0
         self.playersheet = playersheet
         self.currentx = x
@@ -23,7 +23,7 @@ class SpriteClass(pygame.sprite.Sprite):
         self.speed = speed
 
     def move(self):
-        xoffsets = [0,self.speed, self.speed, self.speed, 0, -self.speed, -self.speed, -self.speed]
+        xoffsets = [0, self.speed, self.speed, self.speed, 0, -self.speed, -self.speed, -self.speed]
         yoffsets = [-self.speed, -self.speed, 0, self.speed, self.speed, self.speed, 0, -self.speed]
 
         self.currentx += xoffsets[self.direction]
