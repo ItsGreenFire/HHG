@@ -1,8 +1,8 @@
-#Credits
+# Credits
 Everything used in this project
 
-##Creators -
+## Creators -
 ...
 
-##Player Sheets -
+## Player Sheets -
 https://opengameart.org/content/8-directional-character-template
