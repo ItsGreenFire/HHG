@@ -23,6 +23,9 @@ class ViewerClass:
     def add_sprite(self, spr):
         self.sprites.append(spr)
 
+    def remove_sprite(self, spr):
+        self.sprites.remove(spr)
+
     def repaint(self):
         self.screen.fill("black")
         self.screen.blit(self.levelimg, self.levelimg.get_rect().center)
@@ -33,6 +36,3 @@ class ViewerClass:
 
         # Border
         pygame.display.flip()
-
-    def getScreen(self):
-        return self.screen
