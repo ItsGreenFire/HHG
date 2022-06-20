@@ -13,6 +13,7 @@ class InputClass:
 
     def getkeydown(self):
         self.sc.setSpeed(0)
+        keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit(0)
@@ -30,22 +31,20 @@ class InputClass:
                         self.currentDir -= 1
                     else:
                         self.currentDir = 7
-            if keyboard.is_pressed("s"):
-                if keyboard.is_pressed("shift"):
-                    self.sc.setSpeed(-2)
-                else:
-                    self.sc.setSpeed(-4)
-                    self.sc.playersheet = "playersheet"
-            else:
-                self.sc.playersheet = "idlesheet"
-            if keyboard.is_pressed("w"):
-                if keyboard.is_pressed("shift"):
-                    self.sc.setSpeed(2)
-                else:
-                    self.sc.setSpeed(4)
-                    self.sc.playersheet = "playersheet"
-            else:
-                self.sc.playersheet = "idlesheet"
             self.sc.setDirection(self.currentDir)
+        if keyboard.is_pressed("s"):
+            if keyboard.is_pressed("shift"):
+                self.sc.setSpeed(-2)
+            else:
+                self.sc.setSpeed(-4)
+            self.sc.playersheet = "playerSheet"
+        else:
+            self.sc.playersheet = "idlesheet"
+        if keyboard.is_pressed("w"):
+            if keyboard.is_pressed("shift"):
+                self.sc.setSpeed(3)
+            else:
+                self.sc.setSpeed(5)
+            self.sc.playersheet = "playerSheet"
         self.vc.repaint()
         clock.tick(18)

@@ -33,6 +33,7 @@ class ViewerClass:
         # Print to screen
         for s in self.sprites:
             s.drawSprite(self.screen)
-
-        # Border
         pygame.display.flip()
+
+    def getscreen(self):
+        return self.screen

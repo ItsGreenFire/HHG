@@ -1,5 +1,4 @@
 import pygame
-
 from sprites import SpriteClass
 from viewer import ViewerClass
 from level import LevelClass

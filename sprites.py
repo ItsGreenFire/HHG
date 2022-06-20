@@ -16,11 +16,11 @@ class SpriteClass(pygame.sprite.Sprite):
         self.currenty = y
         self.scale = scale
 
-    def setDirection(self, d):
-        self.direction = d
-
     def setSpeed(self, speed):
         self.speed = speed
+
+    def setDirection(self, d):
+        self.direction = d
 
     def move(self):
         xoffsets = [0, self.speed, self.speed, self.speed, 0, -self.speed, -self.speed, -self.speed]
@@ -41,3 +41,6 @@ class SpriteClass(pygame.sprite.Sprite):
         self.move()
         screen.blit(simg, (self.currentx, self.currenty), (xPos, yPos, sizerect, sizerect))
         self.index += 1
+
+    def getInfo(self):
+        return [self.speed, self.direction, self.scale]
