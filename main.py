@@ -3,7 +3,7 @@ from viewer import ViewerClass
 from floor import FloorClass
 from userinput import InputClass
 
-if __name__ == '__viewer__':
+if __name__ == '__main__':
     pass
 
 # Classes
