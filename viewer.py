@@ -5,18 +5,17 @@ for monitor in get_monitors():
     pass
 
 clock = pygame.time.Clock()
+pygame.init()
 
 
 class ViewerClass:
-    def __init__(self, width, height, levelimg):
+    def __init__(self, width, height, platename):
         self.width = width
         self.height = height
-
-        self.levelimg = pygame.transform.scale(pygame.image.load("assets/" + levelimg), (width * .5, height * .5))
-        # self.borderimg = pygame.transform.scale(pygame.image.load("assets/border.png"),(width, height))
-
         self.screen = pygame.display.set_mode([width, height])
-        self.levelrect = self.levelimg.get_rect()
+
+        # self.borderimg = pygame.transform.scale(pygame.image.load("assets/border.png"),(width, height))
+        self.plateimg = pygame.image.load(platename)
 
         self.sprites = []
 
@@ -27,13 +26,14 @@ class ViewerClass:
         self.sprites.remove(spr)
 
     def repaint(self):
+        pygame.display.set_caption("Horrific Horrors", "HH")
+        pygame.display.set_icon(pygame.image.load('assets/settingsGear.png'))
         self.screen.fill("black")
-        self.screen.blit(self.levelimg, self.levelimg.get_rect().center)
 
         # Print to screen
         for s in self.sprites:
             s.drawSprite(self.screen)
-        pygame.display.flip()
 
-    def getscreen(self):
-        return self.screen
+        self.screen.blit(self.plateimg, (100 + 1 * 32, 100 + 1 * 32))
+
+        pygame.display.flip()

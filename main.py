@@ -1,22 +1,17 @@
-import pygame
 from sprites import SpriteClass
 from viewer import ViewerClass
-from level import LevelClass
+from floor import FloorClass
 from userinput import InputClass
 
-if __name__ == '__main__':
+if __name__ == '__viewer__':
     pass
 
-# Pygame
-pygame.init()
-pygame.display.set_caption("Horrific Horrors", "HH")
-pygame.display.set_icon(pygame.image.load('assets/settingsGear.png'))
-
 # Classes
-vc = ViewerClass(1280, 720, "level_1.png")
+fc = FloorClass(0, 100, 100)
+vc = ViewerClass(1280, 720, fc.read_file())
 sc = SpriteClass("playerSheet", 400, 100, 3, 8)
-lc = LevelClass(1)
-io = InputClass(vc, sc)
+io = InputClass(vc, sc, fc)
+
 
 vc.add_sprite(sc)
 # ============================

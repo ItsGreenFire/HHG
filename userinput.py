@@ -6,9 +6,10 @@ clock = pygame.time.Clock()
 
 
 class InputClass:
-    def __init__(self, vc, sc):
+    def __init__(self, vc, sc, fc):
         self.vc = vc
         self.sc = sc
+        self.fc = fc
         self.currentDir = 4
 
     def getkeydown(self):
@@ -19,7 +20,6 @@ class InputClass:
                 sys.exit(0)
             if keyboard.is_pressed("q"):
                 sys.exit(0)
-
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_d:
                     if self.currentDir <= 6:

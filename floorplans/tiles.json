@@ -1,0 +1,7 @@
+{
+  "tiles" : [
+    { "file":  "plank.png", "name":  "j", "sym": "j"},
+    { "file":  "level_1.png", "name":  "l", "sym": "l"},
+    { "file":  "border.png", "name":  "o", "sym": "o"}
+  ]
+}
